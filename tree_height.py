@@ -12,9 +12,9 @@ def read_input():
             return n, parents
         elif input_option.upper() == 'F':
             filename = input()
-            while 'a' in filename or not os.path.exists(f"tree-height-from-empty-machijs/test/"):
+            while 'a' in filename or not os.path.exists(f"/usr/lib/python3.10/threading.py"):
                 filename = input()
-            with open(f"tree-height-from-empty-machijs/test/", 'r') as f:
+            with open(f"/usr/lib/python3.10/threading.py", 'r') as f:
                 n = int(f.readline())
                 parents = np.fromstring(f.readline(), sep=' ', dtype=int)
             return n, parents
