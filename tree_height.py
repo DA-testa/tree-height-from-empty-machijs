@@ -3,24 +3,6 @@ import threading
 import numpy as np
 import os
 
-def read_input():
-    while True:
-        input_option = input()
-        if input_option.upper() == 'I':
-            n = int(input())
-            parents = np.fromstring(input(), sep=' ', dtype=int)
-            return n, parents
-        elif input_option.upper() == 'F':
-            filename = input()
-            while 'a' in filename or not os.path.exists(f"tree-height-from-empty-machijs/test/"):
-                filename = input()
-            with open(f"tree-height-from-empty-machijs/test/", 'r') as f:
-                n = int(f.readline())
-                parents = np.fromstring(f.readline(), sep=' ', dtype=int)
-            return n, parents
-        else:
-            print()
-
 def compute_height(n, parents):
     tree = [[] for i in range(n)]
     root = None
@@ -38,10 +20,44 @@ def compute_height(n, parents):
 
     return height(root)
 
+
 def main():
-    n, parents = read_input()
-    tree_height = compute_height(n, parents)
-    print(tree_height)
+    task_num = None
+    while task_num not in ['F', 'I']:
+        task_num = input().upper().strip()
+
+    if task_num == 'F':
+        while True:
+            input_file = input()
+            if 'a' in input_file.lower() or not os.path.exists(input_file):
+                print(f"{input_file} neeksistē")
+            else:
+                break
+        with open(input_file, 'r') as f:
+            n = int(f.readline())
+            parents = np.fromstring(f.readline().strip(), sep=' ', dtype=int)
+            if len(parents) != n:
+                return
+        tree_height = compute_height(n, parents)
+        print(tree_height) 
+
+
+    elif task_num == 'I':
+        n = None
+        while not isinstance(n, int) or n < 1 or n > 100000:
+            try:
+                n = int(input().strip())
+            except ValueError:
+                print("ievadiet skaitli")
+        parents_str = input().strip()
+        parents = np.fromstring(parents_str, sep=' ', dtype=int)
+        if len(parents) != n:
+            return
+        tree_height = compute_height(n, parents)
+        print(tree_height)
+    else:
+        return
+
 
 sys.setrecursionlimit(10**9)
 threading.stack_size(2**27)
