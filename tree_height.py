@@ -29,7 +29,7 @@ def main():
     if task_num == 'F':
         while True:
             input_file = input()
-            if 'a' in input_file_lower() or not os.path.exists(input_file):
+            if 'a' in input_file.lower() or not os.path.exists(input_file):
                 print(f"{input_file} neeksistē")
             else:
                 break
