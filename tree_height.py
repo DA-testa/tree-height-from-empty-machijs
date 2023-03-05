@@ -21,10 +21,13 @@ def compute_height(n, parents):
 
 
 def main():
-    n = int(input())
-    parents = np.fromstring(input(), sep=' ', dtype=int)
-    tree_height = compute_height(n, parents)
-    print(tree_height)
+    try:
+        n = int(input())
+        parents = np.fromstring(input(), sep=' ', dtype=int)
+        tree_height = compute_height(n, parents)
+        print(tree_height)
+    except ValueError:
+        print("kluda int")
 
 
 sys.setrecursionlimit(10**9)
