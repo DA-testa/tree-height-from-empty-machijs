@@ -26,7 +26,7 @@ def main():
     if not task_num.isdigit():
         print("nav skaitlis")
         return
-    input_file = f"{task_num}.txt"
+    input_file = f"{task_num}"
     if not os.path.exists(input_file):
         print(f"fails {input_file} neeksistē")
         return
