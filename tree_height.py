@@ -7,14 +7,14 @@ def read_input():
     while True:
         input_option = input()
         if input_option.upper() == 'I':
-            n = int(input())
+            n = int(input().strip())
             parents = np.fromstring(input(), sep=' ', dtype=int)
             return n, parents
         elif input_option.upper() == 'F':
             filename = input()
-            while 'a' in filename or not os.path.exists(f"/usr/lib/python3.10/threading.py"):
+            while 'a' in filename or not os.path.exists(f"tree-height-from-empty-machijs/test/"):
                 filename = input()
-            with open(f"/usr/lib/python3.10/threading.py", 'r') as f:
+            with open(f"tree-height-from-empty-machijs/test/", 'r') as f:
                 n = int(f.readline())
                 parents = np.fromstring(f.readline(), sep=' ', dtype=int)
             return n, parents
