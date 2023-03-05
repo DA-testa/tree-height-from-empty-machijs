@@ -1,6 +1,7 @@
 import sys
 import threading
 import numpy as np
+import os
 
 def compute_height(n, parents):
     tree = [[] for i in range(n)]
@@ -21,13 +22,19 @@ def compute_height(n, parents):
 
 
 def main():
-    try:
-        n = int(input())
-        parents = np.fromstring(input(), sep=' ', dtype=int)
-        tree_height = compute_height(n, parents)
-        print(tree_height)
-    except ValueError:
-        print("kluda int")
+    task_num = input()
+    if not task_num.isdigit():
+        print("nav skaitlis")
+        return
+    input_file = f"{task_num}.txt"
+    if not os.path.exists(input_file):
+        print(f"fails {input_file} neeksistē")
+        return
+    with open(input_file, 'r') as f:
+        n = int(f.readline())
+        parents = np.fromstring(f.readline(), sep=' ', dtype=int)
+    tree_height = compute_height(n, parents)
+    print(tree_height)
 
 
 sys.setrecursionlimit(10**9)
