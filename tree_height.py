@@ -27,11 +27,12 @@ def main():
         task_num = input().upper().strip()
 
     if task_num == 'F':
-        task_num = input().strip()
-        input_file = f"{task_num}"
-        if not os.path.exists(input_file):
-            print(f"{input_file} neeksistē")
-            return
+        while True:
+            input_file = input()
+            if 'a' in input_file_lower() or not os.path.exists(input_file):
+                print(f"{input_file} neeksistē")
+            else:
+                break
         with open(input_file, 'r') as f:
             n = int(f.readline())
             parents = np.fromstring(f.readline().strip(), sep=' ', dtype=int)
